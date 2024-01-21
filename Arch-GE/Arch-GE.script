@@ -1,6 +1,6 @@
 GE_image = Image("Arch-GE.png");
 
-scaled_GE_image = GE_image.Scale(Window.GetWidth(),Window.GetHeight());
+scaled_GE_image = GE_image.Scale(Window.GetWidth(),Window.GetHeight()); #set width and height to display resolution
 GE_sprite = Sprite(scaled_GE_image);
 
 GE_sprite.SetX(0); # Place in the centre

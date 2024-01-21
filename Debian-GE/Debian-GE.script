@@ -1,23 +1,10 @@
 GE_image = Image("Debian-GE.png");
 
-screen_ratio = Window.GetHeight() / Window.GetWidth();
-GE_ratio = GE_image.GetHeight() / GE_image.GetWidth();
-
-if (screen_ratio > GE_ratio)
-  {  # Screen ratio is taller than image ratio, we will match the screen height
-     scale_factor =  Window.GetHeight() / GE_image.GetHeight();
-  }
-else
-  {  # Screen ratio is wider than image ratio, we will match the screen width
-     scale_factor =  Window.GetWidth() / GE_image.GetWidth();
-  }
-
-scaled_GE_image = GE_image.Scale(GE_image.GetWidth()  * scale_factor,
-                                         GE_image.GetHeight() * scale_factor);
+scaled_GE_image = GE_image.Scale(Window.GetWidth(),Window.GetHeight()); #set width and height to display resolution
 GE_sprite = Sprite(scaled_GE_image);
 
-GE_sprite.SetX(Window.GetWidth()  / 2 - scaled_GE_image.GetWidth () / 2); # Place in the centre
-GE_sprite.SetY(Window.GetHeight() / 2 - scaled_GE_image.GetHeight() / 2);
+GE_sprite.SetX(0); # Place in the centre
+GE_sprite.SetY(0);
 GE_sprite.SetZ(-10000); # Place right at the back
 
 progress_box.image = Image("progress_box.png");
