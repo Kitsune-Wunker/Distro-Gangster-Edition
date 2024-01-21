@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=baller
+Description=Arch linux gangster edition
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/baller
+ScriptFile=/usr/share/plymouth/themes/baller/baller.script
