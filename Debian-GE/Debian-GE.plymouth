@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Arch Pacino
+Description=Arch linux gangster edition
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/Debian-GE
+ScriptFile=/usr/share/plymouth/themes/Debian-GE/Debian-GE.script

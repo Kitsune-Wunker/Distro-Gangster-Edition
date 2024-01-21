@@ -1,0 +1,46 @@
+GE_image = Image("Debian-GE.png");
+
+screen_ratio = Window.GetHeight() / Window.GetWidth();
+GE_ratio = GE_image.GetHeight() / GE_image.GetWidth();
+
+if (screen_ratio > GE_ratio)
+  {  # Screen ratio is taller than image ratio, we will match the screen height
+     scale_factor =  Window.GetHeight() / GE_image.GetHeight();
+  }
+else
+  {  # Screen ratio is wider than image ratio, we will match the screen width
+     scale_factor =  Window.GetWidth() / GE_image.GetWidth();
+  }
+
+scaled_GE_image = GE_image.Scale(GE_image.GetWidth()  * scale_factor,
+                                         GE_image.GetHeight() * scale_factor);
+GE_sprite = Sprite(scaled_GE_image);
+
+GE_sprite.SetX(Window.GetWidth()  / 2 - scaled_GE_image.GetWidth () / 2); # Place in the centre
+GE_sprite.SetY(Window.GetHeight() / 2 - scaled_GE_image.GetHeight() / 2);
+GE_sprite.SetZ(-10000); # Place right at the back
+
+progress_box.image = Image("progress_box.png");
+progress_box.sprite = Sprite(progress_box.image);
+
+progress_box.x = Window.GetX() + Window.GetWidth() / 2 - progress_box.image.GetWidth() / 2;
+progress_box.y = Window.GetY() + Window.GetHeight() * 0.75 - progress_box.image.GetHeight() / 2;
+progress_box.sprite.SetPosition(progress_box.x, progress_box.y, 0);
+
+progress_bar.original_image = Image("progress_bar.png");
+progress_bar.sprite = Sprite();
+
+progress_bar.x = Window.GetX() + Window.GetWidth()  / 2 - progress_bar.original_image.GetWidth() / 2;
+progress_bar.y = Window.GetY() + Window.GetHeight() / 2 * 1.5  - progress_box.image.GetHeight() / 2 + (progress_box.image.GetHeight() - progress_bar.original_image.GetHeight()) / 2;
+progress_bar.sprite.SetPosition(progress_bar.x, progress_bar.y, 1);
+
+fun progress_callback (duration, progress)
+  {
+    if (progress_bar.image.GetWidth () != Math.Int (progress_bar.original_image.GetWidth () * progress))
+      {
+        progress_bar.image = progress_bar.original_image.Scale(progress_bar.original_image.GetWidth(progress_bar.original_image) * progress, progress_bar.original_image.GetHeight());
+        progress_bar.sprite.SetImage (progress_bar.image);
+      }
+  }
+
+Plymouth.SetBootProgressFunction(progress_callback);
