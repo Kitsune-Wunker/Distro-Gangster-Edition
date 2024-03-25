@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Gangster edition gangster edition
+Description=Gentoo gangster edition
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/baller
+ScriptFile=/usr/share/plymouth/themes/baller/baller.script

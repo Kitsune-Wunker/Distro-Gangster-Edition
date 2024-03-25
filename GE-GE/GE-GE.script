@@ -1,0 +1,34 @@
+################################Background##############################
+GE_image = Image("GE-GE.png");
+scaled_GE_image = GE_image.Scale(Window.GetWidth(),Window.GetHeight()); #set width and height to display resolution
+GE_sprite = Sprite(scaled_GE_image);
+
+GE_sprite.SetX(Window.GetX());
+GE_sprite.SetZ(Window.GetY());
+GE_sprite.SetZ(-10000); # Place at back
+
+################################Progress Bar############################
+PB_image = Image("progress_box.png");
+scaled_PB_image = PB_image.Scale(Window.GetWidth(),PB_image.GetHeight());
+progress_box.sprite = Sprite(scaled_PB_image);
+
+progress_box.y = Window.GetY() + Window.GetHeight() - PB_image.GetHeight();
+progress_box.sprite.SetPosition(0, progress_box.y, 0);
+
+progress_bar_original_image = Image("progress_bar.png");
+progress_bar.sprite = Sprite();
+
+progress_bar.x = Window.GetX();
+progress_bar.y = Window.GetY() + Window.GetHeight() - PB_image.GetHeight();
+progress_bar.sprite.SetPosition(progress_bar.x, progress_bar.y, 1);
+
+fun progress_callback (duration, progress)
+  {
+    if (progress_bar.image.GetWidth () != Math.Int (progress_bar_original_image.GetWidth () * progress))
+      {
+        progress_bar.image = progress_bar_original_image.Scale(Window.GetWidth() * progress, PB_image.GetHeight());
+        progress_bar.sprite.SetImage (progress_bar.image);
+      }
+  }
+
+Plymouth.SetBootProgressFunction(progress_callback);
