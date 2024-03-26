@@ -4,5 +4,5 @@ Description=Gentoo gangster edition
 ModuleName=script
 
 [script]
-ImageDir=/usr/share/plymouth/themes/baller
-ScriptFile=/usr/share/plymouth/themes/baller/baller.script
+ImageDir=/usr/share/plymouth/themes/GE-GE
+ScriptFile=/usr/share/plymouth/themes/GE-GE/GE-GE.script
