@@ -1,2 +1,2 @@
 # Distro-Gangster-Edition
-Plymouth themes for [Distro] gangster edition
+Plymouth themes for Arch/Debian/Gentoo gangster edition
